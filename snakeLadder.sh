@@ -1,5 +1,7 @@
 playerPos=0
+diceCount=0
 rollDie() {
+  diceCount=$((diceCount + 1))
   dieValue=$(( $((RANDOM % 6)) + 1 ))
   echo "Die value ${dieValue}"
 }
@@ -26,3 +28,4 @@ do
   esac
 done
 echo 'player won'
+echo "Total Number of times dice rolled ${diceCount}"
