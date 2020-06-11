@@ -9,8 +9,12 @@ do
   case $option in
     0)  echo "No Play" ;;
     1)  rollDie
-        playerPos=$((playerPos + dieValue))
-        echo 'player got a ladder'
+        if [ $((playerPos + dieValue)) -gt 100 ]; then
+          echo 'Player got a value greater than 100 so stays in the same position'
+        else
+          playerPos=$((playerPos + dieValue))
+          echo 'player got a ladder'
+        fi
         echo "player position is ${playerPos}";;
     2)  rollDie
         playerPos=$((playerPos - dieValue))
