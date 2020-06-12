@@ -24,20 +24,23 @@ rollDie() {
   esac
   return $playerPos
 }
-while [ $player_One_Pos -ne 100 -a $player_Two_Pos -ne 100 ]
-do
-  echo 'Player 1 turn'
-  rollDie $player_One_Pos
-  player_One_Pos=$?
-  echo "player one position ${player_One_Pos}"
-  echo 'Player 2 turn'
-  rollDie $player_Two_Pos
-  player_Two_Pos=$?
-  echo "player two position ${player_Two_Pos}"
-done
-if [ $player_One_Pos -eq 100 ]; then
-  echo 'Player 1 won'
-else
-  echo 'Player 2 won'
-fi
-echo "Total Number of times dice rolled ${diceCount}"
+startGame() {
+  while [ $player_One_Pos -ne 100 -a $player_Two_Pos -ne 100 ]
+  do
+    echo 'Player 1 turn'
+    rollDie $player_One_Pos
+    player_One_Pos=$?
+    echo "player one position ${player_One_Pos}"
+    echo 'Player 2 turn'
+    rollDie $player_Two_Pos
+    player_Two_Pos=$?
+    echo "player two position ${player_Two_Pos}"
+  done
+  if [ $player_One_Pos -eq 100 ]; then
+    echo 'Player 1 won'
+  else
+    echo 'Player 2 won'
+  fi
+  echo "Total Number of times dice rolled ${diceCount}"
+}
+startGame
