@@ -1,7 +1,5 @@
-playerOne=1
-playerTwo=2
-playerOnePos=0
-playerTwoPos=0
+player_One_Pos=0
+player_Two_Pos=0
 diceCount=0
 rollDie() {
   playerPos=$1
@@ -26,18 +24,18 @@ rollDie() {
   esac
   return $playerPos
 }
-while [ $playerOnePos -ne 100 -o $playerTwoPos -ne 100 ]
+while [ $player_One_Pos -ne 100 -a $player_Two_Pos -ne 100 ]
 do
   echo 'Player 1 turn'
-  rollDie $playerOnePos
-  playerOnePos=$?
-  echo "player one position ${playerOnePos}"
+  rollDie $player_One_Pos
+  player_One_Pos=$?
+  echo "player one position ${player_One_Pos}"
   echo 'Player 2 turn'
-  rollDie $playerTwoPos
-  playerTwoPos=$?
-  echo "player two position ${playerTwoPos}"
+  rollDie $player_Two_Pos
+  player_Two_Pos=$?
+  echo "player two position ${player_Two_Pos}"
 done
-if [ $playerOnePos -eq 100 ]; then
+if [ $player_One_Pos -eq 100 ]; then
   echo 'Player 1 won'
 else
   echo 'Player 2 won'
